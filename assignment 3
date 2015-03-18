@@ -1,0 +1,39 @@
+#1
+best <-function (m, y) {
+     data<- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+subset1 <- subset(data, State == m)
+subset1[,11:46]<-sapply(subset1[,11:46],function(x)as.numeric(x))
+   if (y=="heart attack"){
+      subset2<-subset1[order(subset1$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack, subset1$Hospital.Name),]
+     }
+  if (y=="heart failure"){ 
+            subset2<-subset1[order(subset1$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure,subset1$Hospital.Name),]
+     }
+  if (y=="pneumonia") {
+              subset2<-subset1[order(subset1$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia,subset1$Hospital.Name),]
+       }
+   print(subset2[1,2])
+  }
+
+best('MD','heart attack')
+
+
+
+#2
+best <-function (m, y) {
+  data<- read.csv("outcome-of-care-measures.csv", colClasses = "character")
+  subset1 <- subset(data, State == m)
+  subset1[,11:46]<-sapply(subset1[,11:46],function(x)as.numeric(x))
+  if (y=="heart attack"){
+    subset2<-subset1[order(subset1$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack,subset1$Hospital.Name),]
+  }
+  if (y=="heart failure"){ 
+    subset2<-subset1[order(subset1$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure,subset1$Hospital.Name),]
+  }
+  if (y=="pneumonia") {
+               subset2<-subset1[order(subset1$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia,subset1$Hospital.Name),]
+  }
+  print(subset2[1,2])
+}
+best('MD','heart attack')
+Enter file contents here
